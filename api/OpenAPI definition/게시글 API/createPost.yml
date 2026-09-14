@@ -1,0 +1,65 @@
+info:
+  name: createPost
+  type: http
+  seq: 5
+  tags:
+    - 게시글 API
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/posts"
+  body:
+    type: json
+    data: |-
+      {
+        "content": "Bruno를 이용해서 게시글 등록 테스트 중입니다.",
+        "imageUrl": "https://example.com/images/test.png"
+      }
+  auth:
+    type: basic
+    username: user1@example.com
+    password: "1234"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: 200 Response
+    description: OK
+    request:
+      url: "{{baseUrl}}/api/v1/posts"
+      method: POST
+      headers:
+        - name: X-Member-Id
+          value: ""
+      body:
+        type: json
+        data: |-
+          {
+            "id": 0,
+            "memberId": 0,
+            "content": "",
+            "imageUrl": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: "*/*"
+      body:
+        type: text
+        data: |-
+          {
+            "id": 0,
+            "memberId": 0,
+            "content": "",
+            "imageUrl": "",
+            "likeCount": 0,
+            "createdAt": "",
+            "updatedAt": ""
+          }

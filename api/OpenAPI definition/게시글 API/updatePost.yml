@@ -1,0 +1,71 @@
+info:
+  name: updatePost
+  type: http
+  seq: 2
+  tags:
+    - 게시글 API
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/v1/posts/:id"
+  headers:
+    - name: X-Member-Id
+      value: ""
+  params:
+    - name: id
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "content": "",
+        "imageUrl": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+examples:
+  - name: 200 Response
+    description: OK
+    request:
+      url: "{{baseUrl}}/api/v1/posts/:id"
+      method: PUT
+      headers:
+        - name: X-Member-Id
+          value: ""
+      params:
+        - name: id
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "content": "",
+            "imageUrl": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: "*/*"
+      body:
+        type: text
+        data: |-
+          {
+            "id": 0,
+            "memberId": 0,
+            "content": "",
+            "imageUrl": "",
+            "likeCount": 0,
+            "createdAt": "",
+            "updatedAt": ""
+          }
