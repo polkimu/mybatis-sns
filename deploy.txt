@@ -1,0 +1,2 @@
+ssh -i "mybatis-sns-key.pem" ec2-user@43.201.39.241
+
